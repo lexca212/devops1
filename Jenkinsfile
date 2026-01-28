@@ -13,7 +13,7 @@ pipeline {
 
         stage('Deploy to STAGING') {
             steps {
-                sshagent(['vps-key']) {
+                sshagent(['ssh-vps']) {
             sh '''
             ssh -o StrictHostKeyChecking=no lexca@192.168.88.99 "
                 cd /var/www/html/devops1 || exit
