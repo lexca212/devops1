@@ -13,13 +13,13 @@ pipeline {
 
         stage('Deploy to STAGING') {
             steps {
-                sshagent(['ssh-vps']) {
-                    sh """
-                    ssh lexca@192.168.88.99 '
-                        cd /var/www/html/devops1 || exit
-                        git pull origin master
-                    '
-                    """
+                sshagent(['vps-key']) {
+            sh '''
+            ssh -o StrictHostKeyChecking=no lexca@192.168.88.99 "
+                cd /var/www/html/devops1 || exit
+                git pull origin master
+            "
+            '''
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sshagent(['ssh-vps']) {
                     sh """
-                    ssh lexca@192.168.88.72 '
+                    ssh -o StrictHostKeyChecking=no lexca@192.168.88.72 '
                         cd /var/www/html/devops1 || exit
                         git pull origin master
                     '
