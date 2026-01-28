@@ -5,9 +5,9 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
+                git branch: 'master',
                     credentialsId: 'github-creds',
-                    url: 'https://github.com/USERNAME/sisur-web.git'
+                    url: 'https://github.com/lexca212/devops1.git'
             }
         }
 
@@ -15,9 +15,9 @@ pipeline {
             steps {
                 sshagent(['ssh-vps']) {
                     sh """
-                    ssh user@IP_STAGING '
-                        cd /var/www/sisur || exit
-                        git pull origin main
+                    ssh lexca@192.168.88.99 '
+                        cd /var/www/html/devops1 || exit
+                        git pull origin master
                     '
                     """
                 }
@@ -34,9 +34,9 @@ pipeline {
             steps {
                 sshagent(['ssh-vps']) {
                     sh """
-                    ssh user@IP_PRODUCTION '
-                        cd /var/www/sisur || exit
-                        git pull origin main
+                    ssh lexca@192.168.88.72 '
+                        cd /var/www/html/devops1 || exit
+                        git pull origin master
                     '
                     """
                 }
