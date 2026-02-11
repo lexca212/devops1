@@ -33,9 +33,11 @@ Branch: */main
 
 Script Path: Jenkinsfile
 7. isi jenkins file :
+===========
 pipeline {
-    agent any
 
+    agent any
+    
     stages {
 
         stage('Checkout Code') {
