@@ -8,5 +8,6 @@
 <body>
     <center>Lexca</center>
     <h1>Helga</h1>
+    <h1><?php echo date('Y-M-D'); ?></h1>
 </body>
 </html>
