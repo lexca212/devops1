@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'master',
-                    credentialsId: 'github-creds',
+                    credentialsId: 'devops1',
                     url: 'https://github.com/lexca212/devops1.git'
             }
         }
